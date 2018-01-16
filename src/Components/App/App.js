@@ -12,26 +12,24 @@ class App extends React.Component {
     
     this.state = { 
       searchResults: [{
-        key: 0,
-        name: 1,
+        id:1,
+        name: 'testing',
         artist: "Nicole",
         album: "0uTjaH"
       },{
-        key: 1,
-        name: 1,
+        id:2,
+        name:'testing',
         artist: "Nicole",
         album: "0uTjaH" 
       },{
-        key: 2,
-        name: 1,
+        id:3,
+        name: 'testing',
         artist: "Nicole",
         album: "0uTjaH" 
       }]
     }
       
   }
-    
-    
 
   render() {
     //console.log(this.state.searchResults);
@@ -42,7 +40,6 @@ class App extends React.Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} />
-            <Playlist />
           </div>
         </div>
       </div>
