@@ -13,19 +13,19 @@ class App extends React.Component {
     this.state = { 
       searchResults: [{
         id:1,
-        name: 'testing',
-        artist: "Nicole",
-        album: "0uTjaH"
+        name: 'Don\'t stop till you get enough',
+        artist: "Michael Jackson",
+        album: "Bad"
       },{
         id:2,
-        name:'testing',
-        artist: "Nicole",
-        album: "0uTjaH" 
+        name:'Hollywood Swinging',
+        artist: "Sugarhill Gang",
+        album: "Sugarhill Gang" 
       },{
         id:3,
-        name: 'testing',
-        artist: "Nicole",
-        album: "0uTjaH" 
+        name: 'Livin Da Vie Da Loca',
+        artist: "Ricky Martin",
+        album: "NOW Thats Music 21" 
       }]
     }
       
@@ -35,7 +35,7 @@ class App extends React.Component {
     //console.log(this.state.searchResults);
     return (
       <div>
-        <h1>Ja<span className="highlight">mmm</span>ing</h1>
+        <h1>Ya<span className="highlight">nnn</span>ing</h1>
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
