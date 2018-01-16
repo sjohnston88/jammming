@@ -5,11 +5,14 @@ import Track from '../Track/Track';
 
 class TrackList extends React.Component {
   render(){
+    console.log(this.props.tracks);
     return (
       <div className="TrackList">
-        <Track />
-        <Track />
-        <Track />
+        {
+            this.props.tracks.map(track => {
+                return <Track track={track} key={track.id} />
+            })
+        }
       </div>
     );
   }
