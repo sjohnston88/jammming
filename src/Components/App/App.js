@@ -13,52 +13,69 @@ class App extends React.Component {
     this.state = { 
       playlistName: 'Playlist Name',
       searchResults: [{
-        id:1,
+        id: 1,
         name: 'Don\'t stop till you get enough',
         artist: "Michael Jackson",
-        album: "Bad"
+        album: "Bad",
+        isRemoval:false
       },{
-        id:2,
+        id: 2,
         name:'Hollywood Swinging',
         artist: "Sugarhill Gang",
-        album: "Sugarhill Gang" 
+        album: "Sugarhill Gang",
+        isRemoval: false,
       },{
-        id:3,
+        id: 3,
         name: 'Livin Da Vie Da Loca',
         artist: "Ricky Martin",
-        album: "NOW Thats Music 21" 
+        album: "NOW Thats Music 21",
+        isRemoval:false
       }],
-      playlistTracks: [{
-        id:1,
-        name: 'Don\'t stop till you get enough',
-        artist: "Michael Jackson",
-        album: "Bad"
-      },{
-        id:2,
-        name:'Hollywood Swinging',
-        artist: "Sugarhill Gang",
-        album: "Sugarhill Gang" 
-      },{
-        id:3,
-        name: 'Livin Da Vie Da Loca',
-        artist: "Ricky Martin",
-        album: "NOW Thats Music 21" 
-      }]
-      
+      playlistTracks: []
     }
+    
+    this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
       
   }
 
+  addTrack(track){
+    if (this.state.playlistTracks.indexOf(track) === -1 ){
+      console.log(`${track.name} added to the array.`)
+      track.isRemoval = true;
+      this.setState({ 
+        playlistTracks: this.state.playlistTracks.concat([track])
+      })
+    } else {
+        console.log(`${track.name} already exists in the array.`)
+    }
+  }
+
+  removeTrack(track){
+    track.isRemoval = false;
+    this.setState({ 
+      playlistTracks: this.state.playlistTracks.filter(playlistTrack => playlistTrack.id !== track.id)
+    })
+    console.log(`${track.name} removed from the array.`)
+  }
+
+  updatePlaylistName(name){
+    this.setState({ 
+      playlistName: name
+    })
+    console.log(`Playlist renamed to: ${name}`)
+  }
+
   render() {
-    //console.log(this.state.searchResults);
     return (
       <div>
         <h1>Ya<span className="highlight">nnn</span>ing</h1>
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults} />
-            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} />
+            <SearchResults onRemove={this.removeTrack} onAdd={this.addTrack} searchResults={this.state.searchResults} />
+            <Playlist onNameChange={this.updatePlaylistName} playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} />
           </div>
         </div>
       </div>
