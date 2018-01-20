@@ -47,13 +47,11 @@ class App extends React.Component {
 
   addTrack(track){
     if (this.state.playlistTracks.indexOf(track) === -1 ){
-      console.log(`${track.name} added to the array.`)
+      console.log(`${track.name} added to the playlist.`)
       track.isRemoval = true;
       this.setState({ 
         playlistTracks: this.state.playlistTracks.concat([track])
       })
-    } else {
-        console.log(`${track.name} already exists in the array.`)
     }
   }
 
@@ -62,7 +60,7 @@ class App extends React.Component {
     this.setState({ 
       playlistTracks: this.state.playlistTracks.filter(playlistTrack => playlistTrack.id !== track.id)
     })
-    console.log(`${track.name} removed from the array.`)
+    console.log(`${track.name} removed from the playlist.`)
   }
 
   updatePlaylistName(name){
@@ -87,7 +85,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Ya<span className="highlight">nnn</span>ing</h1>
+        <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
           <SearchBar onSearch={this.search} />
           <div className="App-playlist">
