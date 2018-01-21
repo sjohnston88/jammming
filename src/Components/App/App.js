@@ -6,6 +6,8 @@ import SearchResults from '../SearchResults/SearchResults'
 import Playlist from '../Playlist/Playlist'
 import Spotify from '../../util/Spotify';
 
+Spotify.getAccessToken();
+
 class App extends React.Component {
 
   constructor(props) {
@@ -13,28 +15,7 @@ class App extends React.Component {
     
     this.state = { 
       playlistName: 'Playlist Name',
-      searchResults: [{
-        id: 1,
-        uri: '1',
-        name: 'Don\'t stop till you get enough',
-        artist: "Michael Jackson",
-        album: "Bad",
-        isRemoval:false
-      },{
-        id: 2,
-        uri: '2',
-        name:'Hollywood Swinging',
-        artist: "Sugarhill Gang",
-        album: "Sugarhill Gang",
-        isRemoval: false,
-      },{
-        id: 3,
-        uri: '3',
-        name: 'Livin Da Vie Da Loca',
-        artist: "Ricky Martin",
-        album: "NOW Thats Music 21",
-        isRemoval:false
-      }],
+      searchResults: [],
       playlistTracks: []
     }
     
@@ -80,7 +61,10 @@ class App extends React.Component {
   }
 
   search(term){
-      console.log(term);
+    Spotify.search(term)
+    .then(searchResults => this.setState({
+      searchResults: searchResults
+    }));
   }
 
   render() {

@@ -20,10 +20,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 72px;
 }
 
 .Track-information h3 {
+  margin-top: .22rem;
   margin-bottom: .22rem;
 }
 
@@ -31,4 +31,6 @@
   font-size: .83rem;
   font-weight: 300;
   color: rgba(256, 256, 256, 0.8);
+  margin-top: .22rem;
+  margin-bottom: .22rem;
 }
