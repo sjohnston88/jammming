@@ -56,8 +56,6 @@ const Spotify = {
       console.log('Give the playlist a new name and make sure it has some tracks.')
       return;
     } else {
-      console.log(name)
-      console.log(trackURIs)
       return fetch('https://api.spotify.com/v1/me', {
         headers: {
           Authorization: `Bearer ${accessToken}`
